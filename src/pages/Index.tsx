@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-elevator.jpg";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionHeading from "@/components/SectionHeading";
+import HeroCarousel from "@/components/HeroCarousel";
+import CustomerLogosCarousel from "@/components/CustomerLogosCarousel";
 import homeElevator from "@/assets/product-home-elevator.jpg";
 import commercialElevator from "@/assets/product-commercial-elevator.jpg";
 import stairLift from "@/assets/product-stair-lift.jpg";
@@ -38,64 +38,8 @@ const testimonials = [
 const Index = () => {
   return (
     <div>
-      {/* Hero */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Premium elevator interior with warm amber lighting"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-asphalt/70" />
-        </div>
-        <div className="relative z-10 text-center section-padding max-w-4xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-gold font-display text-sm tracking-[0.3em] uppercase mb-6"
-          >
-            Engineering Excellence
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl lg:text-7xl font-display leading-tight mb-6"
-          >
-            Premium Elevator &{" "}
-            <span className="text-gold">Lift Solutions</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-foreground/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-body"
-          >
-            Precision-crafted vertical transportation systems for discerning architects,
-            developers, and homeowners.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Link
-              to="/contact"
-              className="bg-primary text-primary-foreground px-8 py-4 font-display font-semibold tracking-wide text-sm hover:opacity-90 transition-opacity"
-            >
-              Request a Visit
-            </Link>
-            <Link
-              to="/products"
-              className="border border-foreground/30 text-foreground px-8 py-4 font-display font-semibold tracking-wide text-sm hover:border-foreground/60 transition-colors"
-            >
-              View Products
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      {/* Hero Carousel */}
+      <HeroCarousel />
 
       {/* Highlights */}
       <section className="section-padding section-padding-y bg-graphite">
@@ -106,8 +50,8 @@ const Index = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {highlights.map((item, i) => (
               <AnimatedSection key={item.label} delay={i * 0.1}>
-                <div className="border-t border-gold/30 pt-6">
-                  <p className="text-gold font-display text-3xl md:text-4xl font-bold mb-2">{item.stat}</p>
+                <div className="border-t border-primary/30 pt-6">
+                  <p className="text-primary font-display text-3xl md:text-4xl font-bold mb-2">{item.stat}</p>
                   <p className="font-display text-xs tracking-widest text-foreground mb-3">{item.label}</p>
                   <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
                 </div>
@@ -126,11 +70,11 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {services.map((service, i) => (
               <AnimatedSection key={service.title} delay={i * 0.1}>
-                <div className="bg-graphite p-8 md:p-10 border border-border hover:border-gold/30 transition-colors">
-                  <span className="text-gold font-display text-xs tracking-widest">0{i + 1}</span>
+                <div className="bg-graphite p-8 md:p-10 border border-border hover:border-primary/30 transition-colors">
+                  <span className="text-primary font-display text-xs tracking-widest">0{i + 1}</span>
                   <h3 className="text-xl md:text-2xl mt-3 mb-4">{service.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
-                  <Link to="/services" className="text-signal-blue text-sm mt-6 inline-block hover:underline">
+                  <Link to="/services" className="text-secondary text-sm mt-6 inline-block hover:underline">
                     Learn more →
                   </Link>
                 </div>
@@ -189,25 +133,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Partners */}
-      <section className="section-padding py-16 bg-graphite">
-        <div className="container mx-auto text-center">
-          <p className="text-muted-foreground text-xs tracking-widest font-display uppercase mb-8">Trusted Partners & Certifications</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            {["OTIS", "KONE", "Schindler", "ThyssenKrupp", "Mitsubishi"].map((partner) => (
-              <span key={partner} className="text-muted-foreground/50 font-display text-lg md:text-xl tracking-wider font-semibold">
-                {partner}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Valuable Customers Carousel */}
+      <CustomerLogosCarousel />
 
       {/* Contact CTA */}
       <section className="section-padding section-padding-y">
         <div className="container mx-auto text-center max-w-2xl">
           <AnimatedSection>
-            <p className="text-gold font-display text-sm tracking-widest uppercase mb-4">Get Started</p>
+            <p className="text-primary font-display text-sm tracking-widest uppercase mb-4">Get Started</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display mb-6">
               Let's Discuss Your Project
             </h2>
